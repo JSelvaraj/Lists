@@ -1,5 +1,6 @@
 package impl;
 
+import java.io.UncheckedIOException;
 import java.util.Comparator;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class IterativeListManipulator implements IListManipulator {
             return size;
         }
         ListNode currentNode = head.next;
+        size++;
         while (currentNode != null) {
             size++;
             currentNode = currentNode.next;
@@ -131,14 +133,14 @@ public class IterativeListManipulator implements IListManipulator {
         ListNode copy = new ListNode(head.element);
         while (currentNode != null) {
             newNode = new ListNode(currentNode.element);
-            copy.next = newNode;
+            append(copy, newNode);
             currentNode = currentNode.next;
         }
         return copy;
     }
 
     /**
-     * There are n(n-1)/2 comparisons.)
+     * There are n(n-1)/2 comparisons)
      * @param head the head of the list
      * @return
      */
@@ -161,44 +163,139 @@ public class IterativeListManipulator implements IListManipulator {
 
     @Override
     public ListNode append(ListNode head1, ListNode head2) {
-        // TODO Auto-generated method stub
-        return null;
+        if (head1 == null) {
+            head1 = head2;
+            return head1;
+        } else if (head1.next == null) {
+            head1.next = head2;
+            return head1;
+        }
+        ListNode currentNode = head1.next;
+        while (currentNode.next != null) {
+            currentNode = currentNode.next;
+        }
+        currentNode.next = head2;
+        return head1;
     }
 
     @Override
     public ListNode flatten(ListNode head) {
-        // TODO Auto-generated method stub
-        return null;
+        ListNode newList = (ListNode) head.element;
+        ListNode currentNode = head.next;
+        while (currentNode != null) {
+            append(newList, (ListNode) currentNode.element);
+            currentNode = currentNode.next;
+        }
+        return newList;
     }
 
     @Override
     public boolean isCircular(ListNode head) {
-        // TODO Auto-generated method stub
+        ListNode currentNode = head.next;
+        int currentCount = 0;
+        int followerCount = 1;
+        while (currentNode != null) {
+            currentCount++;
+            if (currentNode == head) {
+                return true;
+            }
+            for (ListNode follower = head.next; follower != currentNode; follower = follower.next) {
+                followerCount++;
+            }
+            if (currentCount != followerCount) {
+                return false;
+            }
+            currentNode = currentNode.next;
+        }
         return false;
     }
 
     @Override
     public boolean containsCycles(ListNode head) {
-        // TODO Auto-generated method stub
+        ListNode currentNode = head.next;
+        int currentCount = 0;
+        int followerCount = 1;
+        while (currentNode != null) {
+            currentCount++;
+            if (currentNode == head) {
+                return true;
+            }
+            for (ListNode follower = head.next; follower != currentNode; follower = follower.next) {
+                followerCount++;
+            }
+            if (currentCount != followerCount) {
+                return true;
+            }
+            currentNode = currentNode.next;
+        }
         return false;
     }
 
+
     @Override
     public ListNode sort(ListNode head, Comparator comparator) {
-        // TODO Auto-generated method stub
-        return null;
+        Object[] list = toArray(head);
+        int swaps = 0;
+        do{
+            for (int i = 0; i < list.length-1; i++){
+                if (comparator.compare(list[i], list[i+1]) < 0) {
+                    Object temp = list[i+1];
+                    list[i+1] = list[i];
+                    list[i] = temp;
+                    swaps++;
+                }
+            }
+        } while (swaps > 0);
+        ListNode newList = null;
+        for (Object element: list) {
+            append(newList, new ListNode(element));
+        }
+        return newList;
     }
 
     @Override
     public ListNode map(ListNode head, ITransformation transformation) {
-        // TODO Auto-generated method stub
-        return null;
+        ListNode newList = deepCopy(head);
+        newList.element = transformation.transform(newList.element);
+        ListNode currentNode = newList.next;
+        for(int i = 1; i < size(newList); i++) {
+            currentNode.element = transformation.transform(currentNode.element);
+            currentNode = currentNode.next;
+        }
+        return newList;
     }
 
     @Override
     public Object reduce(ListNode head, IOperator operator, Object initial) {
-        // TODO Auto-generated method stub
-        return null;
+        Object sum = operator.operate(head.element, initial);
+        if (head.next == null) {
+            return sum;
+        } else {
+            sum = operator.operate(sum, head.next);
+        }
+        ListNode currentNode = head.next.next;
+        while (currentNode != null) {
+            sum = operator.operate(sum, currentNode.element);
+            currentNode = currentNode.next;
+        }
+        return sum;
+    }
+
+    private Object[] toArray(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        int listSize = size(head);
+        Object[] list = new Object[listSize];
+        list[0] = head.element;
+        ListNode currentNode = head.next;
+        int i = 1;
+        while (currentNode != null) {
+            list[i] = currentNode.element;
+            currentNode = currentNode.next;
+            i++;
+        }
+        return list;
     }
 
 }
