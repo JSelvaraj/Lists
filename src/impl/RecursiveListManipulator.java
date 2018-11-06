@@ -16,44 +16,81 @@ public class RecursiveListManipulator implements IListManipulator {
 
     @Override
     public int size(ListNode head) {
-        // TODO Auto-generated method stub
-        return 0;
+        if (head == null) {
+            return 0;
+        }
+        if (head.next == null) {
+            return 1;
+        } else {
+            return size(head.next) + 1;
+        }
+
     }
 
     @Override
     public boolean contains(ListNode head, Object element) {
-        // TODO Auto-generated method stub
+        if (head == null) {
+            return false;
+        }
+        if (head.element != element && head.next != null) {
+            contains(head.next, element);
+        } else if (head.element == element) {
+            return true;
+        }
         return false;
     }
 
     @Override
     public int count(ListNode head, Object element) {
-        // TODO Auto-generated method stub
-        return 0;
+        if (head == null) {
+            return 0;
+        }
+        if (head.element.equals(element)) {
+            return count(head.next, element) + 1;
+        } else {
+            return count(head.next, element);
+        }
     }
 
     @Override
     public String convertToString(ListNode head) {
-        // TODO Auto-generated method stub
-        return null;
+        String list = "";
+        if (head == null) {
+            return list;
+        }
+        if (head.next == null) {
+            return head.element.toString();
+        } else {
+            return head.element.toString() + "," + convertToString(head.next);
+        }
     }
 
     @Override
     public Object getFromFront(ListNode head, int n) throws InvalidIndexException {
-        // TODO Auto-generated method stub
-        return null;
+        if (head == null || n < 0) {
+            throw new InvalidIndexException();
+        } else if (head.next == null && n > 0) {
+            throw new InvalidIndexException();
+        }
+        if (n == 0) {
+            return head.element;
+        } else {
+            return getFromFront(head.next, n -1);
+        }
+
     }
 
     @Override
     public Object getFromBack(ListNode head, int n) throws InvalidIndexException {
-        // TODO Auto-generated method stub
-        return null;
+        int position = (size(head) - 1) - n;
+        if (n < 0 || position < 0) {
+            throw new InvalidIndexException();
+        }
+        return getFromFront(head, position);
     }
 
     @Override
     public boolean deepEquals(ListNode head1, ListNode head2) {
-        // TODO Auto-generated method stub
-        return false;
     }
 
     @Override
