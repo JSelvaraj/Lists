@@ -252,10 +252,8 @@ public class IterativeListManipulator implements IListManipulator {
 
 
     /**
-     * Two nodes are made, one node (currentNode) that iterates through the list, another that follows it. The currentNode keeps count
-     * of how many nodes it has traversed. Each time it changes, a follower node catches up to it, counting how many
-     * node it has traversed. If the follower node's and the currentNode's counts are different in means the currentNode
-     * looped at some point.
+     * Two nodes traverse the list, one traverses twice as fast the other. If they meet then there is a cycle. If they
+     * meet at the head then the list must be circular as well.
      * @param head the head of the list
      * @return true if the list is circular (the last node points to the head of the list as its next node), false if it isn't.
      */
@@ -264,27 +262,29 @@ public class IterativeListManipulator implements IListManipulator {
         if (head == null) {
             return false;
         }
-        if (head.next != null) {
-            ListNode currentNode = head.next;
-            int currentCount = 1;
-            int followerCount = 1;
-            while (currentNode != null) {
+        ListNode fastNode = head;
+        ListNode slowNode = head;
 
-                if (currentNode == head) {
+        while (true) {
+            if (fastNode.next == null) {
+                return false;
+            } else {
+                fastNode = fastNode.next;
+            }
+            if (fastNode.next == null) {
+                return false;
+            } else {
+                fastNode = fastNode.next;
+                slowNode = slowNode.next;
+            }
+            if (fastNode == slowNode) {
+                if (slowNode == head) {
                     return true;
-                }
-                for (ListNode follower = head.next; follower != currentNode; follower = follower.next) {
-                    followerCount++;
-                }
-                if (currentCount != followerCount) {
+                } else {
                     return false;
                 }
-                currentNode = currentNode.next;
-                currentCount++;
-                followerCount = 1;
             }
         }
-        return false;
     }
 
     @Override

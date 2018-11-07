@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.security.cert.Extension;
 import java.util.Comparator;
 
 import org.junit.Before;
@@ -28,12 +29,25 @@ public abstract class ListManipulatorTest {
     private final int element3 = -31;
     private final int element4 = 7;
 
+    private final String element5 = "five";
+    private final String element6 = "six";
+    private final String element7 = "antimony";
+    private final String element8 = "";
+
     private IListManipulator manipulator;
 
     private ListNode list1;
     private ListNode list2;
     private ListNode list3;
     private ListNode list4;
+
+    private ListNode list5;
+    private ListNode list6;
+    private ListNode list7;
+    private ListNode list8;
+
+
+
 
     /**
      * The factory method that must be implemented by any concrete subclass of ListManipulatorTest in order to instantiate a particular implementation of IListManipulator.
@@ -52,6 +66,11 @@ public abstract class ListManipulatorTest {
         list2 = new ListNode(element2, list1);
         list3 = new ListNode(element1, list2);
         list4 = new ListNode(element3, list3);
+
+        list5 = new ListNode(element5);
+        list6 = new ListNode(element6, list5);
+        list7 = new ListNode(element7, list6);
+        list8 = new ListNode(element5, list7);
     }
 
     /**
@@ -74,6 +93,8 @@ public abstract class ListManipulatorTest {
         assertEquals(1, manipulator.count(list3, element2));
         assertEquals(2, manipulator.count(list3, element1));
         assertEquals(2, manipulator.count(list3, new Integer(element1)));
+
+        assertEquals(0,manipulator.count(list3, null));
 
     }
 
@@ -167,6 +188,12 @@ public abstract class ListManipulatorTest {
         assertTrue(manipulator.deepEquals(list1, new ListNode(element1)));
         assertTrue(manipulator.deepEquals(list2, new ListNode(element2, new ListNode(element1))));
         assertFalse(manipulator.deepEquals(list1, list2));
+
+        //Extensions
+        assertTrue(manipulator.deepEquals(new ListNode(element6, new ListNode(element5)), list6));
+        assertFalse(manipulator.deepEquals(new ListNode(null), null));
+        assertTrue(manipulator.deepEquals(new ListNode(null), new ListNode(null)));
+
 
     }
 
@@ -271,6 +298,11 @@ public abstract class ListManipulatorTest {
         assertFalse(manipulator.containsDuplicates(list2));
         assertTrue(manipulator.containsDuplicates(list3));
         assertTrue(manipulator.containsDuplicates(list4));
+
+        //Extensions
+        assertTrue(manipulator.containsDuplicates(list8));
+        assertTrue(manipulator.containsDuplicates(new ListNode(null, new ListNode(null))));
+        assertFalse(manipulator.containsDuplicates(new ListNode(null, new ListNode(element7))));
     }
 
     /**
