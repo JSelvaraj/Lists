@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1754ef62-a612-4ce1-add2-c08d33141cb7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lists.odt" beforeDir="false" afterPath="$PROJECT_DIR$/Lists.odt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/impl/IterativeListManipulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/impl/IterativeListManipulator.java" afterDir="false" />
-    </list>
+    <list default="true" id="1754ef62-a612-4ce1-add2-c08d33141cb7" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,7 +13,7 @@
     <session id="395496892">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.12" value="2" />
@@ -246,16 +242,15 @@
       <workItem from="1541344338729" duration="13405000" />
       <workItem from="1541383120701" duration="146000" />
       <workItem from="1541419609125" duration="21951000" />
-      <workItem from="1541461751707" duration="823000" />
+      <workItem from="1541461751707" duration="1423000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36325000" />
+    <option name="totallyTimeSpent" value="36925000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="700" width="1294" height="707" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2111293" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
