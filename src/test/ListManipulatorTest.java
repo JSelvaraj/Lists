@@ -74,6 +74,7 @@ public abstract class ListManipulatorTest {
         assertEquals(1, manipulator.count(list3, element2));
         assertEquals(2, manipulator.count(list3, element1));
         assertEquals(2, manipulator.count(list3, new Integer(element1)));
+
     }
 
     /**

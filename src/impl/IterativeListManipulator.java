@@ -314,6 +314,13 @@ public class IterativeListManipulator implements IListManipulator {
         }
     }
 
+    /**
+     * Implements bubble sort. This is the variant that ends the loop early if no elements have been swapped on a
+     * particular iteration.
+     * @param head the head of the list
+     * @param comparator the ordering to be used
+     * @return the sorted list
+     */
 
     @Override
     public ListNode sort(ListNode head, Comparator comparator) {
