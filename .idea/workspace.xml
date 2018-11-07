@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1754ef62-a612-4ce1-add2-c08d33141cb7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/impl/RecursiveListManipulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/impl/RecursiveListManipulator.java" afterDir="false" />
-    </list>
+    <list default="true" id="1754ef62-a612-4ce1-add2-c08d33141cb7" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,7 +13,7 @@
     <session id="395496892">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
@@ -98,8 +96,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/impl/RecursiveListManipulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="102" column="29" selection-start-line="102" selection-start-column="29" selection-end-line="102" selection-end-column="29" />
+            <state relative-caret-position="-320">
+              <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
             </state>
           </provider>
         </entry>
@@ -160,8 +158,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="721" />
-    <option name="y" value="-16" />
+    <option name="x" value="672" />
+    <option name="y" value="514" />
     <option name="width" value="1294" />
     <option name="height" value="707" />
   </component>
@@ -247,16 +245,15 @@
       <workItem from="1541383120701" duration="146000" />
       <workItem from="1541419609125" duration="21951000" />
       <workItem from="1541461751707" duration="1423000" />
-      <workItem from="1541548969963" duration="455000" />
+      <workItem from="1541548969963" duration="681000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37380000" />
+    <option name="totallyTimeSpent" value="37606000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21325879" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -362,8 +359,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/impl/RecursiveListManipulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="102" column="29" selection-start-line="102" selection-start-column="29" selection-end-line="102" selection-end-column="29" />
+        <state relative-caret-position="-320">
+          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
         </state>
       </provider>
     </entry>
