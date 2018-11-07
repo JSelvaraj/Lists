@@ -93,29 +93,34 @@ public class RecursiveListManipulator implements IListManipulator {
     public boolean deepEquals(ListNode head1, ListNode head2) {
         if (head1 == null && head2 == null) {
             return true;
-        }
-        if (head1.element == head2.element) {
-            if (head1.next == null && head2.next == null) {
-                return true;
-            } else if (head1.next != null && head2.next != null) {
-                return deepEquals(head1.next, head2.next);
+        } else if (head1 != null && head2 != null) {
+            if (head1.element == head2.element) {
+                if (head1.next == null && head2.next == null) {
+                    return true;
+                } else if (head1.next != null && head2.next != null) {
+                    return deepEquals(head1.next, head2.next);
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }
-        } else {
-            return false;
         }
+        return false;
     }
 
     @Override
     public ListNode deepCopy(ListNode head) {
-        // TODO Auto-generated method stub
-        return null;
+        if (head == null) {
+            return null;
+        }
+        if (head.next == null) return new ListNode(head.element);
+        else return new ListNode(head.element, deepCopy(head.next));
     }
 
     @Override
     public boolean containsDuplicates(ListNode head) {
-        // TODO Auto-generated method stub
+
         return false;
     }
 

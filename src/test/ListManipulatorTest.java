@@ -166,6 +166,7 @@ public abstract class ListManipulatorTest {
         assertTrue(manipulator.deepEquals(list1, new ListNode(element1)));
         assertTrue(manipulator.deepEquals(list2, new ListNode(element2, new ListNode(element1))));
         assertFalse(manipulator.deepEquals(list1, list2));
+
     }
 
     /**
