@@ -91,6 +91,20 @@ public class RecursiveListManipulator implements IListManipulator {
 
     @Override
     public boolean deepEquals(ListNode head1, ListNode head2) {
+        if (head1 == null && head2 == null) {
+            return true;
+        }
+        if (head1.element == head2.element) {
+            if (head1.next == null && head2.next == null) {
+                return true;
+            } else if (head1.next != null && head2.next != null) {
+                return deepEquals(head1.next, head2.next);
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
     @Override
